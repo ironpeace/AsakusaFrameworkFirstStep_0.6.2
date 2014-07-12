@@ -1,0 +1,15 @@
+<factorypath>
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/asakusa-runtime/0.6.2/208c497fd58c9c77414aa7a53c21715a4b8ead17/asakusa-runtime-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/asakusa-dsl-vocabulary/0.6.2/e27de2b09a035151210d046ef1db162da99b2f97/asakusa-dsl-vocabulary-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/ashigel-compiler/0.6.2/d6685cc708723bdcb71f0efaae78a987c4b6fc92/ashigel-compiler-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/java-dom/0.6.2/8826554229e1260461c03ef47c8c25f73db688aa/java-dom-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/javadoc-parser/0.6.2/4c3d82ac60e61cda35a07761dcde4c06558df86e/javadoc-parser-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/jsr269-bridge/0.6.2/302560a692d044078765b8b1ec910c39f8be34ea/jsr269-bridge-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/collections/0.6.2/10bb179af61196269890716ac7d6b18cce9c4da8/collections-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/com.asakusafw/simple-graph/0.6.2/1b0ba9d3418191f76de70fc1ebb179a63925311d/simple-graph-0.6.2.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.0.12/30748760198d5071e139fa3d48cd1e57031fed6/logback-classic-1.0.12.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.0.12/590fd33f7c2cfcc1223da4c58c5cb18600de104e/logback-core-1.0.12.jar' enabled='true' runInBatchMode='false' />
+  <factorypathentry kind='EXTJAR' id='/Users/teppei_tosa/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.5/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar' enabled='true' runInBatchMode='false' />
+</factorypath>

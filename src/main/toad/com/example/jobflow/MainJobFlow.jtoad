@@ -1,0 +1,380 @@
+{
+  "diagramType": "JOBFLOW",
+  "contents": [
+    {
+      "CLASSNAME": "JobFrameNode",
+      "INSTANCE": {
+        "name": "mainJobFlow",
+        "className": "com.example.jobflow.MainJobFlow",
+        "x": 160,
+        "y": 48,
+        "width": 384,
+        "height": 256,
+        "id": 1,
+        "direction": 0,
+        "children": [
+          {
+            "CLASSNAME": "JobPort",
+            "INSTANCE": {
+              "cx": 160,
+              "cy": 256,
+              "out": false,
+              "name": "sales_detail",
+              "namePosition": 8,
+              "modelName": "sales_detail",
+              "modelDescription": "売上明細",
+              "id": 6,
+              "direction": 0,
+              "type": "JobPort",
+              "description": "sales_detail"
+            }
+          },
+          {
+            "CLASSNAME": "JobPort",
+            "INSTANCE": {
+              "cx": 160,
+              "cy": 157,
+              "out": false,
+              "name": "item_master",
+              "namePosition": 8,
+              "modelName": "item_master",
+              "modelDescription": "商品マスタ",
+              "id": 2,
+              "direction": 2,
+              "type": "JobPort",
+              "description": "item_master"
+            }
+          },
+          {
+            "CLASSNAME": "JobPort",
+            "INSTANCE": {
+              "cx": 543,
+              "cy": 184,
+              "out": true,
+              "name": "output_sales",
+              "namePosition": 32,
+              "modelName": "output_sales",
+              "modelDescription": "出力明細",
+              "id": 3,
+              "direction": 4,
+              "type": "JobPort",
+              "description": "output_sales"
+            }
+          }
+        ],
+        "type": "Jobflow",
+        "description": "MainJobFlow"
+      }
+    },
+    {
+      "CLASSNAME": "MarkerNode",
+      "INSTANCE": {
+        "x": 681,
+        "y": 320,
+        "width": 32,
+        "height": 32,
+        "id": 0,
+        "direction": 0
+      }
+    },
+    {
+      "CLASSNAME": "DataFileNode",
+      "INSTANCE": {
+        "className": "com.example.modelgen.dmdl.csv.ItemMasterFromCsv",
+        "modelName": "item_master",
+        "modelDescription": "商品マスタ",
+        "fileType": "default Importer",
+        "x": 13,
+        "y": 115,
+        "width": 109,
+        "height": 48,
+        "id": 4,
+        "direction": 0,
+        "type": "DataFile",
+        "description": "ItemMaster"
+      }
+    },
+    {
+      "CLASSNAME": "DataFileNode",
+      "INSTANCE": {
+        "className": "com.example.modelgen.dmdl.csv.SalesDetailFromCsv",
+        "modelName": "sales_detail",
+        "modelDescription": "売上明細",
+        "fileType": "default Importer",
+        "x": 14,
+        "y": 210,
+        "width": 108,
+        "height": 48,
+        "id": 5,
+        "direction": 0,
+        "type": "DataFile",
+        "description": "SalesDetail"
+      }
+    },
+    {
+      "CLASSNAME": "DataFileNode",
+      "INSTANCE": {
+        "className": "com.example.modelgen.dmdl.csv.OutputSalesToCsv",
+        "modelName": "output_sales",
+        "modelDescription": "出力明細",
+        "fileType": "default Exporter",
+        "x": 601,
+        "y": 164,
+        "width": 117,
+        "height": 48,
+        "id": 8,
+        "direction": 0,
+        "type": "DataFile",
+        "description": "OutputSales"
+      }
+    },
+    {
+      "CLASSNAME": "OperatorNode",
+      "INSTANCE": {
+        "className": "com.example.operator.MainOperator",
+        "methodName": "joinedSales",
+        "attributeList": [
+          {
+            "annotationName": "com.asakusafw.vocabulary.operator.MasterJoin",
+            "parameterName": "selection",
+            "valueType": "java.lang.String"
+          }
+        ],
+        "x": 248,
+        "y": 183,
+        "width": 80,
+        "height": 48,
+        "id": 9,
+        "direction": 0,
+        "children": [
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 248,
+              "cy": 199,
+              "out": false,
+              "name": "master",
+              "namePosition": 1,
+              "role": "master",
+              "modelName": "item_master",
+              "modelDescription": "商品マスタ",
+              "id": 10,
+              "direction": 2,
+              "type": "OpePort",
+              "description": "マスター"
+            }
+          },
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 248,
+              "cy": 215,
+              "out": false,
+              "name": "tx",
+              "namePosition": 1,
+              "role": "tx",
+              "modelName": "sales_detail",
+              "modelDescription": "売上明細",
+              "id": 11,
+              "direction": 2,
+              "type": "OpePort",
+              "description": "トランザクション"
+            }
+          },
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 328,
+              "cy": 199,
+              "out": true,
+              "name": "joined",
+              "namePosition": 4,
+              "role": "joined",
+              "modelName": "joined_sales",
+              "modelDescription": "結合明細",
+              "id": 12,
+              "direction": 4,
+              "type": "OpePort",
+              "description": "結合済"
+            }
+          },
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 328,
+              "cy": 215,
+              "out": true,
+              "name": "missed",
+              "namePosition": 4,
+              "role": "missed",
+              "modelName": "sales_detail",
+              "modelDescription": "売上明細",
+              "id": 13,
+              "direction": 4,
+              "type": "OpePort",
+              "description": "マスター無し"
+            }
+          }
+        ],
+        "type": "@MasterJoin",
+        "description": "マスター結合演算子"
+      }
+    },
+    {
+      "CLASSNAME": "EllipseOperatorNode",
+      "INSTANCE": {
+        "className": "com.asakusafw.vocabulary.flow.util.CoreOperators",
+        "methodName": "stop",
+        "x": 359,
+        "y": 260,
+        "width": 16,
+        "height": 16,
+        "id": 14,
+        "direction": 0,
+        "type": "stop",
+        "description": "停止演算子"
+      }
+    },
+    {
+      "CLASSNAME": "OperatorNode",
+      "INSTANCE": {
+        "className": "com.asakusafw.vocabulary.flow.util.CoreOperators",
+        "methodName": "extend",
+        "x": 352,
+        "y": 120,
+        "width": 80,
+        "height": 48,
+        "id": 15,
+        "direction": 0,
+        "children": [
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 352,
+              "cy": 144,
+              "out": false,
+              "name": "in",
+              "namePosition": 0,
+              "role": "",
+              "modelName": "joined_sales",
+              "modelDescription": "結合明細",
+              "id": 16,
+              "direction": 2,
+              "type": "OpePort",
+              "description": "入力"
+            }
+          },
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 432,
+              "cy": 144,
+              "out": true,
+              "name": "out",
+              "namePosition": 0,
+              "role": "",
+              "modelName": "output_sales",
+              "modelDescription": "出力明細",
+              "id": 17,
+              "direction": 4,
+              "type": "OpePort",
+              "description": "出力"
+            }
+          }
+        ],
+        "type": "extend",
+        "description": "拡張演算子"
+      }
+    },
+    {
+      "CLASSNAME": "OperatorNode",
+      "INSTANCE": {
+        "className": "com.example.operator.MainOperator",
+        "methodName": "updated",
+        "x": 444,
+        "y": 228,
+        "width": 80,
+        "height": 48,
+        "id": 18,
+        "direction": 0,
+        "children": [
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 444,
+              "cy": 252,
+              "out": false,
+              "name": "in",
+              "namePosition": 0,
+              "role": "",
+              "modelName": "output_sales",
+              "modelDescription": "出力明細",
+              "id": 19,
+              "direction": 2,
+              "type": "OpePort",
+              "description": "入力"
+            }
+          },
+          {
+            "CLASSNAME": "OpePort",
+            "INSTANCE": {
+              "cx": 524,
+              "cy": 252,
+              "out": true,
+              "name": "out",
+              "namePosition": 0,
+              "role": "",
+              "modelName": "output_sales",
+              "modelDescription": "出力明細",
+              "id": 20,
+              "direction": 4,
+              "type": "OpePort",
+              "description": "出力"
+            }
+          }
+        ],
+        "type": "@Update",
+        "description": "更新演算子"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceId": 5,
+      "targetId": 6
+    },
+    {
+      "sourceId": 6,
+      "targetId": 11
+    },
+    {
+      "sourceId": 4,
+      "targetId": 2
+    },
+    {
+      "sourceId": 2,
+      "targetId": 10
+    },
+    {
+      "sourceId": 20,
+      "targetId": 3
+    },
+    {
+      "sourceId": 3,
+      "targetId": 8
+    },
+    {
+      "sourceId": 12,
+      "targetId": 16
+    },
+    {
+      "sourceId": 13,
+      "targetId": 14
+    },
+    {
+      "sourceId": 17,
+      "targetId": 19
+    }
+  ],
+  "type": "Jobflow"
+}

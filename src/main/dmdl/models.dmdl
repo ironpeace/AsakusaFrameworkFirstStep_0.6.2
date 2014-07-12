@@ -1,0 +1,117 @@
+"商品マスタ"
+@directio.csv(
+  charset = "UTF-8",
+  allow_linefeed = FALSE,
+  has_header = FALSE,
+  true = "true",
+  false = "false",
+  date = "yyyy-MM-dd",
+  datetime = "yyyy-MM-dd HH:mm:ss",
+  compression = "org.apache.hadoop.io.compress.GzipCodec",
+)
+item_master = {
+
+    "商品ID"
+    @directio.csv.field(name = "item_id")
+	item_id : INT;
+
+    "商品名"
+    @directio.csv.field(name = "item_name")
+	item_name : TEXT;
+};
+
+"売上明細"
+@directio.csv(
+  charset = "UTF-8",
+  allow_linefeed = FALSE,
+  has_header = FALSE,
+  true = "true",
+  false = "false",
+  date = "yyyy-MM-dd",
+  datetime = "yyyy-MM-dd HH:mm:ss",
+  compression = "org.apache.hadoop.io.compress.GzipCodec",
+)
+sales_detail = {
+
+    "明細ID"
+    @directio.csv.field(name = "sales_id")
+	sales_id : INT;
+
+    "商品ID"
+    @directio.csv.field(name = "item_id")
+	item_id : INT;
+
+    "売上数"
+    @directio.csv.field(name = "count")
+	count : INT;
+};
+
+"結合明細"
+@directio.csv(
+  charset = "UTF-8",
+  allow_linefeed = FALSE,
+  has_header = FALSE,
+  true = "true",
+  false = "false",
+  date = "yyyy-MM-dd",
+  datetime = "yyyy-MM-dd HH:mm:ss",
+  compression = "org.apache.hadoop.io.compress.GzipCodec",
+)
+joined joined_sales = item_master -> {
+
+    "商品ID"
+    @directio.csv.field(name = "item_id")
+	item_id -> item_id;
+
+    "商品名"
+    @directio.csv.field(name = "item_name")
+	item_name -> item_name;
+} % item_id
++ sales_detail -> {
+
+    "明細ID"
+    @directio.csv.field(name = "sales_id")
+	sales_id -> sales_id;
+
+    "商品ID"
+    @directio.csv.field(name = "item_id")
+	item_id -> item_id;
+
+    "売上数"
+    @directio.csv.field(name = "count")
+	count -> count;
+} % item_id;
+
+"出力明細"
+@directio.csv(
+  charset = "UTF-8",
+  allow_linefeed = FALSE,
+  has_header = FALSE,
+  true = "true",
+  false = "false",
+  date = "yyyy-MM-dd",
+  datetime = "yyyy-MM-dd HH:mm:ss",
+  compression = "org.apache.hadoop.io.compress.GzipCodec",
+)
+output_sales = {
+
+    "商品ID"
+    @directio.csv.field(name = "item_id")
+	item_id : INT;
+
+    "商品名"
+    @directio.csv.field(name = "item_name")
+	item_name : TEXT;
+
+    "明細ID"
+    @directio.csv.field(name = "sales_id")
+	sales_id : INT;
+
+    "売上数"
+    @directio.csv.field(name = "count")
+	count : INT;
+
+    "フラグ"
+    @directio.csv.field(name = "flg")
+	flg : TEXT;
+};
